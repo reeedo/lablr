@@ -1,8 +1,13 @@
 import React from 'react'
 import InternalNav from './components/internal-nav'
+import ampersandReactMixin from 'ampersand-react-mixin'
 
 export default React.createClass({
+	mixins: [ampersandReactMixin],
+
 	render() {
+		/* user object passed in router */
+		const {me} = this.props;
 		return (
 			<InternalNav>
 				<div>
@@ -12,7 +17,10 @@ export default React.createClass({
 				    <ul className='list-unstyled list-inline cf'>
 				      <li>Labelr</li>
 				      <li><a href='/repos'>Repos</a></li>
-				      <li className='pull-right'><a href='/logout'>Logout</a></li>
+				      <li className='pull-right'>
+				      	<span>{me.login}</span>:&nbsp;
+				      	<a href='/logout'>Logout</a>
+				      </li>
 				    </ul>
 				  </nav>
 				  <div className='container'>
